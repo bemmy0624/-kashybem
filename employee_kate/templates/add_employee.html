@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Add Employee - FemmeHR{% endblock %}
+{% block content %}
+<h3 class="text-pink mb-4">➕ Add New Employee</h3>
+<form method="POST">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" class="form-control rounded-pill" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Position</label>
+    <input type="text" name="position" class="form-control rounded-pill" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" name="email" class="form-control rounded-pill" required>
+  </div>
+  <button type="submit" class="btn btn-pink rounded-pill">Save Employee</button>
+</form>
+{% endblock %}

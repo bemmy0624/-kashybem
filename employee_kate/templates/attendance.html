@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Attendance - FemmeHR{% endblock %}
+{% block content %}
+<div class="container">
+  <h3 class="text-pink mb-4 text-center">🕒 Record Attendance</h3>
+  
+  <!-- Attendance Form -->
+  <form method="POST" class="row g-3 align-items-end justify-content-center mb-5">
+    <div class="col-md-5">
+      <label class="form-label">Select Employee</label>
+      <select name="emp_id" class="form-select rounded-pill" required>
+        {% for emp in employees %}
+        <option value="{{ emp.id }}">{{ emp.name }} - {{ emp.position }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Status</label>
+      <select name="status" class="form-select rounded-pill" required>
+        <option value="Present">✅ Present</option>
+        <option value="Absent">❌ Absent</option>
+        <option value="Late">⏰ Late</option>
+      </select>
+    </div>
+    <div class="col-md-2 d-grid">
+      <button type="submit" class="btn btn-pink rounded-pill">Submit</button>
+    </div>
+  </form>
+
+  <!-- Attendance List -->
+  <div class="card shadow-sm rounded-4">
+    <div class="card-header bg-pink text-white rounded-top-4">
+      <h5 class="mb-0">📋 Today's Attendance</h5>
+    </div>
+    <div class="card-body">
+      {% if attendance_list %}
+      <table class="table table-bordered table-hover text-center align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>👤 Name</th>
+            <th>💼 Position</th>
+            <th>📅 Date</th>
+            <th>🕒 Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in attendance_list %}
+          <tr>
+            <td>{{ record.employee.name }}</td>
+            <td>{{ record.employee.position }}</td>
+            <td>{{ record.date.strftime('%Y-%m-%d') }}</td>
+            <td>
+              {% if record.status == 'Present' %}
+              <span class="badge bg-success">Present</span>
+              {% elif record.status == 'Absent' %}
+              <span class="badge bg-danger">Absent</span>
+              {% elif record.status == 'Late' %}
+              <span class="badge bg-warning text-dark">Late</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="text-center text-muted">No attendance records found for today.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

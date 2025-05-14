@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup - FemmeHR{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <!-- Signup Form Card -->
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4 text-pink">Create Account</h3>
+                    <form method="POST">
+                        <!-- Username Input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input type="text" id="username" name="username" class="form-control rounded-pill shadow-sm" required>
+                        </div>
+
+                        <!-- Password Input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control rounded-pill shadow-sm" required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-pink w-100 rounded-pill shadow-lg">Sign Up</button>
+
+                        <!-- Login Link -->
+                        <p class="text-center mt-3">
+                            <small class="text-muted">Already have an account? <a href="{{ url_for('login') }}" class="text-decoration-none text-pink">Login</a></small>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

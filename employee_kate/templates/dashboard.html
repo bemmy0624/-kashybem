@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - FemmeHR{% endblock %}
+{% block content %}
+
+<div class="main-content text-center">
+    <h2>Welcome to FemmeHR Dashboard</h2>
+
+    <!-- Search Bar -->
+    <form method="GET" action="{{ url_for('view_employees') }}" class="my-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <input type="text" name="search" placeholder="Search employees by name..." class="form-control rounded-pill shadow-sm" required>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-pink w-100 rounded-pill">🔍 Search</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Dashboard Actions -->
+    <div class="dashboard-actions mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-3 mb-3">
+                <a href="{{ url_for('add_employee') }}" class="btn btn-lg btn-pink w-100">➕ Add Employee</a>
+            </div>
+            <div class="col-md-3 mb-3">
+                <a href="{{ url_for('view_employees') }}" class="btn btn-lg btn-outline-pink w-100">👥 View Employees</a>
+            </div>
+            <div class="col-md-3 mb-3">
+                <a href="{{ url_for('attendance') }}" class="btn btn-lg btn-outline-pink w-100">🕒 Attendance</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
